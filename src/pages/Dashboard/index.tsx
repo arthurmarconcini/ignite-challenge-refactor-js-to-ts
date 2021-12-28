@@ -12,7 +12,7 @@ interface FoodProps {
   name: string
   description: string
   price: string
-  available: boolean
+  avaliable: boolean
   image: string
 }
 
