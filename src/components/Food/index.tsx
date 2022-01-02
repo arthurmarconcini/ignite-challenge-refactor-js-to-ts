@@ -1,37 +1,29 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { FiEdit3, FiTrash } from 'react-icons/fi'
 
 import { Container } from './styles'
 import api from '../../services/api'
 
-interface FoodProps {
+interface FoodData {
   id: number
   name: string
   description: string
-  price: string
+  price: number
   avaliable: boolean
   image: string
 }
 
-interface FoodsProps {
-  key: number
-  food: {
-    id: number
-    name: string
-    description: string
-    price: string
-    avaliable: boolean
-    image: string
-  }
-  handleDelete: (id: number) => void
-  handleEditFood: (food: FoodProps) => void
+interface FoodProps {
+  food: FoodData
+  handleDelete: (id: number) => Promise<void>
+  handleEditFood: (food: FoodData) => void
 }
 
 export default function Food({
   food,
   handleEditFood,
   handleDelete
-}: FoodsProps) {
+}: FoodProps) {
   const [isAvailable, setIsAvailable] = useState(food.avaliable)
 
   const toggleAvailable = async () => {
